@@ -1,10 +1,16 @@
+require 'game_settings'
+
 class PlayerCommunicator
 
-	attr_accessor :guess_history, :feedback_history, :total_turns, :turn_number
+	attr_accessor :guess_history, :feedback_history, :total_turns, :turn_number, :guess
 
 	def guess_io
 		puts "Please enter your guess:"
 		@guess = gets.chomp.split(//)
+	end
+
+	def valid_guess?
+		(@guess - GameSettings.available_symbols) == [] && @guess.length == 5 ? true : false
 	end
 
 	def store_guess(guess)

@@ -45,6 +45,14 @@ describe PlayerCommunicator do
 			subject.construct_gameboard.should include("Turn #12  |           |           |")
 		end
 
-		#need to test validity of entry
+		it 'should not allow invalid symbols' do
+			subject.guess = ["b","b","b","b","X"]
+			subject.valid_guess?.should == false
+		end
+
+		it 'should not allow a guess less than 5 symbols in length' do
+			subject.guess = ["b","b","b","b"]
+			subject.valid_guess?.should == false		
+		end
 	end
 end
