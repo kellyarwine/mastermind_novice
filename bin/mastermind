@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'game'
+require 'player_communicator'
 
-game = Game.new
-game.run_game
+player_communicator = PlayerCommunicator.new
+play_game = true
+
+while play_game == true
+	game = Game.new(player_communicator)
+	game.run_game
+	play_game = player_communicator.display_play_again_message
+end

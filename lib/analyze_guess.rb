@@ -7,16 +7,17 @@ class AnalyzeGuess
 		@near_match = GameSettings.near_match_symbol
 	end
 
-	def get_feedback(guess, code)
+	def get_feedback(guess,code)
 		feedback = []
+		temp_code = code.dup
 		for current_symbol in 0..guess.length-1
-			if guess[current_symbol] == code[current_symbol]
+			if guess[current_symbol] == temp_code[current_symbol]
 				feedback << @match
-				code[current_symbol] = "X"
-			elsif [guess[current_symbol]] - code == []
+				temp_code[current_symbol] = "X"
+			elsif [guess[current_symbol]] - temp_code == []
 				feedback << @near_match
-				symbol_position = code.index(guess[current_symbol])
-				code[symbol_position] = "X"
+				symbol_position = temp_code.index(guess[current_symbol])
+				temp_code[symbol_position] = "X"
 			else
 				feedback << @no_match
 			end

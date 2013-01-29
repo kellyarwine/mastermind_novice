@@ -1,0 +1,20 @@
+To run the game, type:
+
+bin/mastermind
+
+To play:
+
+Try to guess the secret code by entering a guess.
+
+You have 12 turns.
+
+The game will generate the following feedback based on your guess (in no particular order):
+
++ "+" for each symbol in your guess that is the correct symbol in the correct position compared to the secret code.
+
+- "-" for each symbol in your guess that is the correct symbol in the incorrect position compared to the secret code.
+
+- " " for each symbol in your guess that is not in the secret code.
+
+TODO:  fix secret_code_generator test
+TODO:  3 pending tests
